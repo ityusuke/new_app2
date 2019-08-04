@@ -1,0 +1,4 @@
+%p tour search
+= form_tag(tour_path(@tours), :method => 'get' ) do
+  = text_field_tag :search
+  = submit_tag 'Search', :name => nil

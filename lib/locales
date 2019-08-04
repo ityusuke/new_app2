@@ -1,0 +1,4 @@
+Faker::Config.locale = :ja
+
+puts Faker::Name.name #=> 日本語氏名
+puts Faker::Lorem.sentence　#=> 文章

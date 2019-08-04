@@ -1,0 +1,12 @@
+.card
+  %h6.page_title コメント一覧
+  .card-body#comment_form
+    -comments.each do |comment|
+      %h6.card-subtitle.mb-2.text-muted 
+      =comment.content
+      %h6.card-subtitle.mb-2.text-muted
+      =link_to(comment.user.username,user_path(comment.user.id))
+      %h6.card-subtitle.mb-2.text-muted
+      =comment.created_at
+      -if comment.user_id == current_user.id
+        = link_to("削除",tour_comment_path(comment.tour_id,comment.id),class:"card-link",method: :delete,remote:true)

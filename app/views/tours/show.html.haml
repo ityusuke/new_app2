@@ -1,0 +1,24 @@
+%h2.page_title.mb-2 ツアー詳細
+.card
+  .card-body
+    %h4.card-title  
+      %smallタイトル:
+      #{@tour.tourname}
+    %h6.card-subtitle.mb-2.text-muted 
+      %small製作者:
+      =link_to(@tour.user.username,user_path(@tour.user.id))
+    %p.card-text
+    = @tour.tourcontent
+    = image_tag @tour.tour_image1.to_s
+    = image_tag @tour.tour_image2.to_s
+    = image_tag @tour.tour_image3.to_s
+    = render partial: 'likes/likes', locals: { tour: @tour }
+.card#comments_area
+  = render partial: 'comments/index',
+    locals: { comments: @comments }
+.card
+  = render partial: 'comments/form',
+    locals: { comment: @comment, tour: @tour }
+.card
+   
+

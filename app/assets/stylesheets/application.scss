@@ -1,0 +1,88 @@
+
+@import "bootstrap";
+body{
+     background-image:url(travel3.jpg);
+     background-size: cover;
+     background-attachment: fixed;
+.page_title{
+    font-style: italic;
+    text-align:center;
+    margin-bottom:.5rem;
+    margin-top:.5rem;
+}
+.white_box{
+    background-color:#ffffffde;
+    color: #495057;
+    width:50%;
+    min-height:30rem;
+    margin:7rem auto;
+    border:white 1px solid;
+    border-radius:1rem;
+    padding:3rem;
+    box-shadow: 1px 1px 1px 1px #f8f9fa26
+}
+.flash{
+    background-color:gray;
+    width:100%;
+    color:white;
+    opacity:0.7;
+}
+}
+
+nav{
+    background-color:white;
+    border-bottom:1px gray solid;
+.navbar-brand{
+     color: #0b499d;
+}
+.nav-link{
+    font-style: italic;
+    margin-left:1rem;
+    font-weight:bold;
+    color: #6c757d;
+}
+.nav-link:hover{
+    opacity:0.9;
+    border-bottom:1px gray solid;    
+}
+.dropdown-toggle{
+    margin: 0;
+    margin-left: 2rem;
+    margin-top: .2rem;
+    background-color: gray;
+     border:2px gray solid;
+    opacity:0.7;
+padding: 3px 10px;
+
+}
+}
+
+.form_group{
+    text-align:center;
+    width:70%;
+    margin:0 auto;
+    padding-top:2rem;
+label::after {
+  content: "\A" ;
+  white-space: pre;
+}
+}
+
+abbr{
+    display:none;
+}
+.follow_button{
+        margin:1rem auto;
+        padding:1% 45%;
+       
+}
+.about-card{
+    margin:2rem auto;
+}
+.under-line:hover{
+    opacity:0.9;
+    border-bottom:1px gray solid;    
+}
+.carousel-fade{
+    margin:0 auto;
+}
