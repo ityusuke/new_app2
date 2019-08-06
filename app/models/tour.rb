@@ -12,14 +12,11 @@ class Tour < ApplicationRecord
   acts_as_taggable            
   
 
-  def self.search(search)
-    if search
-      where(['name LIKE ?', "%#{search}%"]) 
-    else
-      all 
+
+  
+   def self.search(search)
+      return Tour.all unless search
+      Tour.where(['tourcontent LIKE ?', "%#{search}%"])
     end
-  end
-  
-  
   
 end

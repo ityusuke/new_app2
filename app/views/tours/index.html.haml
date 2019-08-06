@@ -1,23 +1,8 @@
-%h2.page_title ツアーリスト
-=render "shared/search"
-= page_entries_info @tours
-= paginate @tours  
--@tours.each do |tour|
-  .card.mb-1.mt-1
-    .card-body
-      %h4.card-title  
-        %smallタイトル:
-        #{tour.tourname}
-      %h6.card-subtitle.mb-2.text-muted 
-        %small製作者:
-        =link_to(tour.user.username,user_path(tour.user.id))
-      %p.card-text
-        = truncate(tour.tourcontent,separator: '.',lendth:40) do
-          =link_to("続きを読む",tour_path(tour.id))
-      %p.card-text
-      - tour.tag_list.each do |tag|
-        %span{:style => "background-color: #e9e9e9; border-radius: 5px;"}= tag
-
-      = link_to "詳細",tour_path(tour.id),class:"card-link"
-= paginate @tours  
+%h2.page_title.mb-5 ツアーリスト
+.container
+  = page_entries_info @tours
+  = paginate @tours
+  .container#index_lists
+    =render  "tours/index_item"
+  = paginate @tours  
     

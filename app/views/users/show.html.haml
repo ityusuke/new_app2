@@ -1,14 +1,13 @@
 %h2.page_title.mb-2
   =@user.username
   のページ
-  %h6 フォロー:#{@user.followings.count}
-  %h6 フォロワー：#{@user.followers.count}
-// -if @user.userimage
-//   .image_box
-//     = image_tag(@user.userimage.thumb_header.to_s)
-// -else
-//   = image_tag("guest/jpg")
-= render 'relationships/follow_form',user: @user 
+%p
+  フォロー:
+
+%p
+  フォロワー：
+=link_to("お気に入りリストを見る",favorite_user_path(@user.id))
+= render('relationships/follow_form',user: @user) 
 -@tours.each do |tour|
   .card.my-1
     .card-body
@@ -24,7 +23,7 @@
     
 
       = link_to "詳細",tour_path(tour.id),class:"card-link"
-      -if current_user
+      -if current_user == tour.user
         = link_to "編集",edit_tour_path,class:"card-link"
         = link_to "削除","/tours/#{tour.id}",class:"card-link",method: :delete
 

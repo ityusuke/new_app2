@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
  # protect_from_forgery with: :exception
+ before_action:search?
+ 
   protected
  
  
@@ -10,6 +12,14 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:account_update) << :userimage
     end
     
+    def search?
+  
+        if params[:search]
+             @search=Tour.page(params[:page]).search(params[:search])
+            redirect_to "/search"
+           
+        end
+    end
     def check_user_login?
         unless current_user
             flash.now[:notice]="ログインしてください"

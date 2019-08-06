@@ -1,0 +1,21 @@
+- provide(:title, @title)
+.row
+  %aside.col-md-4
+    %section.user_info
+      %h1= @user.usernamename
+      %span= link_to "view my profile", @user
+      %span
+        %b Tours:
+        = @user.tours.count
+    %section.stats
+      - if @users.any?
+        .user_avatars
+          - @users.each do |user|
+            = user.username
+            = user.created_at
+  .col-md-8
+    %h3= @title
+    - if @users.any?
+      %ul.users.follow
+        = render @users
+      = paginate @users

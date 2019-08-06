@@ -1,9 +1,8 @@
 class FavoritesController < ApplicationController
     
     def create
-        @favorite = Favorite.new(user_id: current_user.id,tour_id: params[:tour_id])
-        @favorite.user_id = current_user.id
-        @favorite.tour_id = params[:tour_id]
+        @tour=Tour.find_by(id: params[:tour_id])
+        @favorite = Favorite.new(user_id: current_user.id,tour_id: @tour.id)
         if @favorite.save
             flash.now[:notice]="お気に入りしました"
             redirect_back(fallback_location: root_path)
@@ -15,7 +14,7 @@ class FavoritesController < ApplicationController
     
     def destroy
         @tour=Tour.find(params[:id])
-        current_user.unfav(@tour)
+        Favorite.find_by(user_id: current_user.id,tour_id: @tour.id).destroy
         flash.now[:notice]="お気に入りしました"
         redirect_back(fallback_location: root_path)
     end

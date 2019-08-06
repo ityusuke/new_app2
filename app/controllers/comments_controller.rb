@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
         @comment.tour_id = params[:tour_id]
     if @comment.save
         flash.now[:notice]="コメントしました"
-        render :linking 
+        redirect_back(fallback_location: root_path)
     else
         flash.now[:notice]="コメントに失敗しました"
         redirect_back(fallback_location: root_path)
@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     def destroy
        @comment=Comment.find(params[:id])
       if @comment.destroy  
-        render :linking
+        redirect_back(fallback_location: root_path)
       end
     end
     

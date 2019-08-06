@@ -2,7 +2,8 @@ class ToursController < ApplicationController
   before_action:check_user_login?, only:[:show,:new,:create,:edit,:update,:destroy]
  
   def index
-    @tours=Tour.page(params[:page]).search(params[:search])
+      @tours=Tour.page(params[:page])
+ 
   end
   
   def show
@@ -49,6 +50,7 @@ class ToursController < ApplicationController
     
   end
   
+
 
     private
     

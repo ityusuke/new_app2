@@ -25,14 +25,6 @@ validates :password,presence:true,length:{maximum:15,minimum:4},
       true
   end
   
-  def fav(tour)
-      self.favorites.find_or_create_by(tour_id: tour.id)
-  end
-  
-  def unfav(tour)
-      unfav=Favorite.find_by(tour_id: tour.id)
-      unfav.destroy
-  end
   
   def  faved?(tour)
     self.favtours.include?(tour)
