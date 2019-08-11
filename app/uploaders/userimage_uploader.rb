@@ -22,26 +22,16 @@ class UserimageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process scale: [200, 300]
-  
+  # process scale: [200, 300]
+  #
   # def scale(width, height)
-  #   do something
+  #   # do something
   # end
-process :resize_to_limit => [100, 100]
+
   # Create different versions of your uploaded files:
-  version :thumb_index do
-    process resize_to_fit: [30, 30]
+  version :thumb do
+    process :resize_to_limit => [300, 300]
   end
-  
-  version :thumb_show do
-    process resize_to_fit: [100, 100]
-  end
-  
-  version :thumb_header do
-    process resize_to_fit: [10, 10]
-  end
-  
-  
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -54,15 +44,4 @@ process :resize_to_limit => [100, 100]
   # def filename
   #   "something.jpg" if original_filename
   # end
-  
-  def filename
-    "#{secure_token}.#{file.extension}" if original_filename.present?
-  end
- 
-  protected
-  def secure_token
-    var = :"@#{mounted_as}_secure_token"
-    model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
-  end
- 
 end

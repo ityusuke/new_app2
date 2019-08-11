@@ -8,6 +8,7 @@
       %small製作者:
       =link_to(@tour.user.username,user_path(@tour.user.id))
     %p.card-text
+    
     = @tour.tourcontent
     %p.mt-3 作成日時：#{@tour.created_at.strftime('%m月%d日 %H時%M分' )}
     = image_tag @tour.tour_image1.to_s
@@ -15,14 +16,15 @@
     = image_tag @tour.tour_image3.to_s
     %p.card-text#likes_ajax
       = render partial: 'likes/likes_box'
+    #favorites_ajax
+      =render "favorites/favorites_form"
 .card#comments_area
   = render partial: 'comments/index',
     locals: { comments: @comments }
 .card
   = render partial: 'comments/form',
     locals: { comment: @comment, tour: @tour }
-#favorites_ajax
-  =render "favorites/favorites_form"
+
 
    
 

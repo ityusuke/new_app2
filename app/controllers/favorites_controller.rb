@@ -2,8 +2,7 @@ class FavoritesController < ApplicationController
     
     def create
         @tour=Tour.find_by(id: params[:tour_id])
-        @favorite = Favorite.new(user_id: current_user.id,tour_id: @tour.id)
-        if @favorite.save
+        if @favorite = Favorite.create(user_id: current_user.id,tour_id: @tour.id)
             flash.now[:notice]="お気に入りしました"
             redirect_back(fallback_location: root_path)
         else

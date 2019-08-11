@@ -3,6 +3,11 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  config.omniauth :google_oauth2,
+                  ENV['GOOGLE_APP_ID']="415961246454-un258ho6aj2aeebktfnemnej68qp7gae.apps.googleusercontent.com",
+                  ENV['GOOGLE_APP_SECRET']="AA9dXwX0pjiBH3sxX3qR3_g-",
+                  name: :google,
+                  scope: %w(email)
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -296,5 +301,5 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-  config.omniauth :google_oauth2,Rails.application.secrets.google_client_id,Rails.application.secrets.google_client_secret
+ 
 end

@@ -1,11 +1,14 @@
 %h2.page_title.mb-2
   =@user.username
   のページ
+// = @user.userimage.thumb_index.url
+= image_tag @user.userimage.thumb.to_s
 %p
   フォロー:
-
+  = link_to(@user.followings.count,followings_user_path(@user.id))
 %p
   フォロワー：
+  = link_to(@user.followers.count,followers_user_path(@user.id))
 =link_to("お気に入りリストを見る",favorite_user_path(@user.id))
 = render('relationships/follow_form',user: @user) 
 -@tours.each do |tour|
@@ -20,8 +23,6 @@
       %p.card-text
         = truncate(tour.tourcontent,separator: '.',lendth:40) do
           =link_to("続きを読む",tour_path(tour.id))
-    
-
       = link_to "詳細",tour_path(tour.id),class:"card-link"
       -if current_user == tour.user
         = link_to "編集",edit_tour_path,class:"card-link"

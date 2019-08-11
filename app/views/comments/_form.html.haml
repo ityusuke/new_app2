@@ -2,11 +2,11 @@
   %h6.page_title コメントする
   = form_with(model: [tour, comment],remote:true) do |f|
     .form-inputs.form_group
-      = f.text_field :comment_content,                       
+      = f.text_field :content,                       
         input_html: { autocomplete: "content",class:"form-control" } 
       =hidden_field_tag :tour_id,@tour.id
       = f.submit "コメントする",
-        input_html: { class:"btn btn-primary mt-2" } 
+        input_html: { class:"btn btn-primary" } 
 
 
     

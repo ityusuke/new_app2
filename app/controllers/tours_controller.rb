@@ -1,13 +1,12 @@
 class ToursController < ApplicationController
   before_action:check_user_login?, only:[:show,:new,:create,:edit,:update,:destroy]
- 
+
   def index
-      @tours=Tour.page(params[:page])
- 
+      @tours=Tour.includes(:user).page(params[:page])
   end
   
   def show
-    @tour=Tour.find_by(id: params[:id])
+    tour_find_by_id
     @like=Like.new
     @likes = Like.where(tour_id: @tour.id)
     @comment = Comment.new
@@ -19,9 +18,7 @@ class ToursController < ApplicationController
   end
   
   def create
-    @tour=Tour.new(tour_params)
-    @tour.user_id=current_user.id
-    if @tour.save
+    if @tour=current_user.tours.new(tour_params).save
       redirect_to user_path(id: current_user.id)
     else
       render new_tour_path
@@ -29,8 +26,7 @@ class ToursController < ApplicationController
   end
 
   def edit
-    @tour=Tour.find_by(id:params[:id])
-    
+    tour_find_by_id
   end
 
   def update
@@ -44,10 +40,9 @@ class ToursController < ApplicationController
   end
   
   def destroy
-     @tour=Tour.find_by(id:params[:id])
+     tour_find_by_id
      @tour.delete
      redirect_to user_path(id: current_user.id)
-    
   end
   
 
@@ -57,5 +52,9 @@ class ToursController < ApplicationController
     def tour_params
       params.require(:tour).permit(:tourname,:tourcontent, :tag_list,
                                    :tour_image1,:tour_image2,:tour_image3)
+    end
+    
+    def tour_find_by_id
+      @tour=Tour.find_by(id:params[:id])
     end
 end

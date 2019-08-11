@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'static_pages#home'
-  get '/about'=>'static_pages#about'
-  get '/search'=>'static_pages#search'
+get '/about'=>'static_pages#about'
+get '/contact'=>'static_pages#contact'
+get '/privacy'=>'static_pages#privacy'
+get '/rule'=>'static_pages#rule'
+get '/search'=>'static_pages#search'
 
 
   devise_for :users, controllers: {

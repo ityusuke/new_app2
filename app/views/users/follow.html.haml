@@ -1,21 +1,23 @@
 - provide(:title, @title)
-.row
-  %aside.col-md-4
-    %section.user_info
-      %h1= @user.usernamename
-      %span= link_to "view my profile", @user
-      %span
-        %b Tours:
-        = @user.tours.count
-    %section.stats
-      - if @users.any?
-        .user_avatars
-          - @users.each do |user|
-            = user.username
-            = user.created_at
-  .col-md-8
-    %h3= @title
-    - if @users.any?
-      %ul.users.follow
-        = render @users
-      = paginate @users
+
+%section.user_info
+  %h1 ユーザー:#{@user.username}
+  %span= link_to "マイページへ",user_path
+  %p #{@user.tours.count}人のユーザー
+%section.stats
+  - if @users.any?
+    .user_avatars
+      -@users.each do |user|
+        .user-box
+          %h6 
+          　ユーザー名：#{user.username}
+          %p.m-0
+          = link_to("view my profile",user_path(user.id))
+          %p.m-0 
+          　フォロー:
+          = link_to(user.followings.count,followings_user_path(user.id))
+          %p.m-0
+          　フォロワー:
+          = link_to(user.followers.count,followers_user_path(user.id))
+
+  = paginate @users

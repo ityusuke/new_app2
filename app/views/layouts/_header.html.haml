@@ -9,7 +9,7 @@
         = link_to "Tourlyとは",about_path,class:"nav-link"
       %li.nav-item
         = link_to "Tour一覧",tours_path,class:"nav-link"
-      -if current_user 
+      -if check_user_login? 
         .dropdown.dropright
           %button#dropdownMenu1.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
             = current_user.username
@@ -31,6 +31,4 @@
               = link_to "login",new_user_session_path,class:"nav-link dropdown-item"
             %li.nav-item
               = link_to "signup",new_user_registration_path,class:"nav-link dropdown-item"
-    %form.form-inline.my-2.my-lg-0
-      =render "shared/search_form"
 
