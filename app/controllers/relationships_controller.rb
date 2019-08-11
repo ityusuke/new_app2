@@ -1,5 +1,6 @@
 class RelationshipsController < ApplicationController
-
+before_action :authenticate_user!
+before_action:flash_when_not_login
 
   def create
     user = User.find(params[:relationship][:follow_id])
