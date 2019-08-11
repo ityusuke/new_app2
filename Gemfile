@@ -25,7 +25,6 @@ gem 'rails_admin'
 # easier form create
 gem 'simple_form'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.3.6'
 # image upload
 gem 'carrierwave'
 # make easier restigation and login 
@@ -37,6 +36,7 @@ gem 'cancancan'
 
 group :development, :test do
   gem 'dotenv-rails'
+gem 'sqlite3', '~> 1.3.6'
 end
 #Bootstrap for rails
 gem 'bootstrap', '~> 4.1.1'
