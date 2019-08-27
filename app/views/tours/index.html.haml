@@ -1,8 +1,7 @@
 %h2.page_title.mb-5 ツアーリスト
-.container
-  = page_entries_info @tours
-  = paginate @tours
-  .container#index_lists
-    =render  "tours/index_item"
-  = paginate @tours  
+// = page_entries_info @tours
+= paginate @tours
+.container#index_lists
+  =render  "tours/index_item"
+= paginate @tours  
     

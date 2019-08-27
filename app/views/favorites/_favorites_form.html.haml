@@ -1,4 +1,10 @@
 - if current_user.faved?(@tour)
-  = link_to('お気に入り登録解除',tour_favorite_path(@tour.id),method: :delete,remote: :true,class:"btn btn-primary favorite-btn")
+  = link_to tour_favorite_path(@tour.id),method: :delete,remote: :true,class:"btn btn-success favorite-btn" do
+    = fa_icon 'book'
+    お気に入り登録解除
+    = fa_icon 'book'
 - else
-  = link_to('お気に入り登録する',tour_favorites_path(@tour.id),method: :post,remote: :true,class:"btn btn-primary favorite-btn") 
+  = link_to tour_favorites_path(@tour.id),method: :post,remote: :true,class:"btn btn-success favorite-btn " do
+    = fa_icon 'book'
+    お気に入り登録する
+    = fa_icon 'book'

@@ -4,7 +4,8 @@
   %body
     =render("layouts/header")
     =render("layouts/flash")
-    .white_box
-      = yield
+    .row
+      .white_box.col-md-6
+        = yield
     =render("layouts/footer")
 

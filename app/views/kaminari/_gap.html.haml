@@ -1,3 +1,2 @@
-%li.page-item.gap
-  .page-link
-    = t('views.pagination.truncate').html_safe
+%li.page-item.disabled
+  = link_to raw(t 'views.pagination.truncate'), '#', class: 'page-link'

@@ -1,31 +1,44 @@
-%h2.page_title.mb-2
-  =@user.username
-  のページ
-// = @user.userimage.thumb_index.url
-= image_tag @user.userimage.thumb.to_s
-%p
-  フォロー:
-  = link_to(@user.followings.count,followings_user_path(@user.id))
-%p
-  フォロワー：
-  = link_to(@user.followers.count,followers_user_path(@user.id))
-=link_to("お気に入りリストを見る",favorite_user_path(@user.id))
-= render('relationships/follow_form',user: @user) 
+.d-flex.justify-content-around
+  .show-left  
+    %h2.page_title.mb-2.text-left
+      = @user.username
+    %h6
+      フォロー:
+      = link_to(@user.followings.count,followings_user_path(@user.id))
+    %h6
+      フォロワー：
+      = link_to(@user.followers.count,followers_user_path(@user.id))
+    %h6
+      お気に入りリスト数：#{@favorites.count}つ
+  .show-right
+    - if @user.user_image.attached?
+      = image_tag(@user.user_image.variant(resize: '150x150').processed)
+    = render('relationships/follow_form',user: @user) 
+.d-flex.justify-content-around
+  =link_to favorite_user_path(@user.id),class:"links" do
+    = fa_icon 'book'
+    お気に入りリスト
+  = link_to edit_user_path(current_user.id),class:"links" do
+    = fa_icon 'edit'
+    ユーザー編集
+  = link_to destroy_user_session_path, method: :delete,class:"links" do
+    = fa_icon 'sign-out'
+    ログアウト
+-if @tours.count == 0
+  %p.text-center.mt-3 投稿したツアーはありません
 -@tours.each do |tour|
   .card.my-1
     .card-body
-      %h4.card-title  
-        %smallタイトル:
-        #{tour.tourname}
+      %h6.card-title
+        = tour.tourname
       %h6.card-subtitle.mb-2.text-muted 
         %small製作者:
         =link_to(tour.user.username,user_path(tour.user.id))
       %p.card-text
         = truncate(tour.tourcontent,separator: '.',lendth:40) do
           =link_to("続きを読む",tour_path(tour.id))
-      = link_to "詳細",tour_path(tour.id),class:"card-link"
+      = link_to "詳細",tour_path(tour.id),class:"card-link links"
       -if current_user == tour.user
-        = link_to "編集",edit_tour_path,class:"card-link"
-        = link_to "削除","/tours/#{tour.id}",class:"card-link",method: :delete
-
+        = link_to "編集",edit_tour_path(tour.id),class:"card-link links"
+        = link_to "削除","/tours/#{tour.id}",class:"card-link links",method: :delete
 

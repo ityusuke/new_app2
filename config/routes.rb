@@ -1,34 +1,32 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-
-
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'static_pages#home'
-get '/about'=>'static_pages#about'
-get '/contact'=>'static_pages#contact'
-get '/privacy'=>'static_pages#privacy'
-get '/rule'=>'static_pages#rule'
-get '/search'=>'static_pages#search'
-
+  get '/about' => 'static_pages#about'
+  get '/contact' => 'static_pages#contact'
+  get '/privacy' => 'static_pages#privacy'
+  get '/rule' => 'static_pages#rule'
+  get '/search' => 'static_pages#search'
 
   devise_for :users, controllers: {
-  registrations: 'users/registrations',
-  sessions: "users/sessions",
-  omniauth_callbacks: "users/omniauth_callbacks"
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  resources :users, :only => [:show,:follow]
-  resources :tours, :only => [:index,:new,:create,:show,
-                              :edit,:update,:destroy]
-  resources :relationships, only: [:create, :destroy]
+  resources :users, only: %i[new create show edit update destroy follow]
+  resources :tours, only: %i[index new create show
+                             edit update destroy]
+  resources :relationships, only: %i[create destroy]
 
- resources :users do
+  resources :users do
     member do
-      get :followings, :followers,:favorite
+      get :followings, :followers, :favorite
     end
   end
   resources :tours do
-  resources :likes, :only => [:create,:destroy]
-  resources :favorites, only: [:create, :destroy]
-  resources :comments, :only => [:create,:destroy]
+    resources :likes, only: %i[create destroy]
+    resources :favorites, only: %i[create destroy]
+    resources :comments, only: %i[create destroy]
   end
-
 end

@@ -1,4 +1,4 @@
-.card-body.my-1
+.card-body.mb-3
   %h6.page_title コメントする
   = form_with(model: [tour, comment],remote:true) do |f|
     .form-inputs.form_group
@@ -6,7 +6,7 @@
         input_html: { autocomplete: "content",class:"form-control" } 
       =hidden_field_tag :tour_id,@tour.id
       = f.submit "コメントする",
-        input_html: { class:"btn btn-primary" } 
+        input_html: { class:"btn btn-primary " } 
 
 
     

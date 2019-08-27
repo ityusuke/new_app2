@@ -1,5 +1,4 @@
-module ToursHelper
+# frozen_string_literal: true
 
-  
-  
+module ToursHelper
 end

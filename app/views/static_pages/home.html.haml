@@ -1,10 +1,10 @@
 .text-center
-  %h1.page_title.pb-2 ようこそ！Touryへ！
+  %h1.page_title.pb-2 ようこそ！！Touryへ！
   %h3.page_title Touryは旅行の思い出をシェアするWEBサービスです
   %h3.page_title 詳しい説明はこちら
   =link_to("Touryをもっと知る",about_path,class:"btn btn=secondary ")
   %br/
-  =link_to("さっそく始める",new_user_registration_path,class:"btn btn=secondary mb-3")
+  =link_to("さっそく始める",new_user_path,class:"btn btn=secondary mb-3")
 #carouselFadeExampleIndicators.carousel.slide.text-center.w-52.carousel-fade{"data-ride" => "carousel"}
   .carousel-inner{:role => "listbox"}
     .carousel-item.active

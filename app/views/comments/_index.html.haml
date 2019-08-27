@@ -5,11 +5,9 @@
     -comments.each do |comment|
       .cmbox
         %h6.card-subtitle.mb-2.text-muted 
-          内容：#{comment.content}
-        %h6.card-subtitle.mb-2.text-muted 
-          ユーザー:
-          =link_to(comment.user.username,user_path(comment.user.id))
-        %h6.card-subtitle.mb-2.text-muted
-          作成日時：#{comment.created_at.strftime('%m月%d日 %H時%M分' )}
-        -if comment.user_id == current_user.id
-          = link_to("削除",tour_comment_path(comment.tour_id,comment.id),class:"card-link",method: :delete,remote:true)
+          #{comment.content}
+        %p.card-subtitle.small.text-right
+          #{comment.created_at.strftime('%m/%d-%H:%M')}
+          =link_to("  #{comment.user.username}さん  ",user_path(comment.user.id))
+          -if comment.user_id == current_user.id
+            = link_to("  コメントを削除する",tour_comment_path(comment.tour_id,comment.id),class:"card-link",method: :delete,remote:true)

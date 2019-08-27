@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module LikesHelper
-    def liked?(tour)
-        Like.find_by(user_id: current_user.id,tour_id: tour.id)
-    end
+  def liked?(tour)
+    Like.find_by(user_id: current_user.id, tour_id: tour.id)
+  end
 end

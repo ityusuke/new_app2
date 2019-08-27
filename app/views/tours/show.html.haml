@@ -2,20 +2,22 @@
 .card
   .card-body
     %h4.card-title  
-      %smallタイトル:
-      #{@tour.tourname}
+      =@tour.tourname
     %h6.card-subtitle.mb-2.text-muted 
       %small製作者:
       =link_to(@tour.user.username,user_path(@tour.user.id))
     %p.card-text
-    
+      - if @tour.images.attached?
+        -@tour.images.each do |image|
+          = image_tag(image.variant(resize: '130x130').processed)
+
     = @tour.tourcontent
-    %p.mt-3 作成日時：#{@tour.created_at.strftime('%m月%d日 %H時%M分' )}
-    = image_tag @tour.tour_image1.to_s
-    = image_tag @tour.tour_image2.to_s
-    = image_tag @tour.tour_image3.to_s
-    %p.card-text#likes_ajax
+    %p.card-text#likes_ajax.mt-5.mb-0
       = render partial: 'likes/likes_box'
+    -if current_user == @tour.user
+      = link_to "編集",edit_tour_path(@tour.id),class:"card-link"
+      = link_to "削除","/tours/#{@tour.id}",class:"card-link",method: :delete
+    %p.small.text-right 作成日時：#{@tour.created_at.strftime('%m月%d日 %H時%M分' )}
     #favorites_ajax
       =render "favorites/favorites_form"
 .card#comments_area

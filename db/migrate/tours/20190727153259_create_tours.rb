@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTours < ActiveRecord::Migration[5.0]
   def change
     create_table :tours do |t|
@@ -7,6 +9,6 @@ class CreateTours < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :tours, [:user_id, :created_at]
+    add_index :tours, %i[user_id created_at]
   end
 end

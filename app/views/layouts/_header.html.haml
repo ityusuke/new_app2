@@ -6,22 +6,27 @@
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
       %li.nav-item
-        = link_to "Tourlyとは",about_path,class:"nav-link"
+        = link_to about_path,class:"nav-link" do
+          = fa_icon 'print'
+          Tourlyとは
       %li.nav-item
-        = link_to "Tour一覧",tours_path,class:"nav-link"
-      -if current_user?
-        .dropdown.dropright
-          %button#dropdownMenu1.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-            = current_user.username
-          .dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
-            %li.nav-item
-            = link_to "tourをつくる",new_tour_path,class:"nav-link　dropdown-item"
-            %li.nav-item
-            = link_to "マイページ",user_path(current_user.id),class:"nav-link　dropdown-item"
-            %li.nav-item
-            = link_to "ユーザー情報編集",edit_user_registration_path,class:"nav-link　dropdown-item"
-            %li.nav-item
-            = link_to "ログアウト",destroy_user_session_path, method: :delete,class:"nav-link　dropdown-item"
+        = link_to "/search",class:"nav-link" do
+          = fa_icon 'search '
+          Tour検索
+      %li.nav-item
+        = link_to tours_path,class:"nav-link" do
+          = fa_icon 'plane'
+          Tour一覧
+      -if current_user  
+        %li.nav-item
+        = link_to new_tour_path,class:"nav-link"do
+          = fa_icon 'edit'
+          tourをつくる
+        %li.nav-item
+        = link_to user_path(current_user.id),class:"nav-link" do
+          = fa_icon 'users'
+          マイページ
+        
       -else
         .dropdown
           %button#dropdownMenu1.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
@@ -30,5 +35,5 @@
             %li.nav-item
               = link_to "login",new_user_session_path,class:"nav-link dropdown-item"
             %li.nav-item
-              = link_to "signup",new_user_registration_path,class:"nav-link dropdown-item"
+              = link_to "signup",new_user_path,class:"nav-link dropdown-item"
 

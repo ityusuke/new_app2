@@ -1,5 +1,7 @@
-
 @import "bootstrap";
+@import 'font-awesome';
+@import 'font-awesome.css';
+@import 'font-awesome-sprockets';
 body{
      background-image:url(travel3.jpg);
      background-size: cover;
@@ -13,7 +15,6 @@ body{
 .white_box{
     background-color:#ffffffde;
     color: #495057;
-    width:50%;
     min-height:30rem;
     margin:7rem auto;
     border:white 1px solid;
@@ -64,8 +65,7 @@ padding: 3px 10px;
 }
 .cmbox{
     padding:1rem;
-     border:1px rgba(0,0,0,0.2) solid;
-    box-shadow:2px 2px rgba(0,0,0,0.2);
+     border-bottom:1px rgba(0,0,0,0.2) solid;  
 }
 .form_group{
     text-align:center;
@@ -141,4 +141,22 @@ dl.searchbox dd{
 
 .search-btn:hover {
   background:#228B22;
+}
+.like{
+  text-decoration: none;
+  color:red;
+}
+.dislike{
+  text-decoration: none;
+  color:gray;
+}
+.justify-content-around{
+  border-bottom:1px grey solid;
+  padding-bottom:1rem;
+  margin-bottom:0.5rem;
+}
+.links{
+    margin-left:1rem;
+    font-weight:bold;
+    color: #6c757d;
 }
