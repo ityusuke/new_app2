@@ -1,59 +1,171 @@
-version: 2 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+version: 2
 jobs:
-  build: 
-    parallelism: 3 
-    docker: 
-      - image: circleci/ruby:2.4-stretch-node-browsers-legacy 
-        environment: 
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: vendor/bundle
-          DBHOST: 127.0.0.1
-          DBUSER: circleci-demo-ruby
-          RAILS_ENV: test
-      - image: circleci/mysql:latest
-     
-    steps: 
-      - checkout 
-
-      
-      - run:
-          name: Which bundler?
-          command: bundle -v
-
-      
+  build:
+    # 対象のブランチ
+    # master に限定
+    branches:
+      only:
+        - master
+　　　　# 使用する Docker イメージ
+　　　　# Rails 用の Ruby イメージ
+　　　　# MySQL 用のイメージ
+    docker:
+       - image: circleci/ruby:2.5.1-node-browsers
+         # MySQL に接続するための環境変数を設定
+         # テスト用なのでデフォルトのまま（rootユーザー）
+         environment:
+           RAILS_ENV: test
+           DB_HOST: 127.0.0.1
+           DB_USERNAME: 'root'
+           DB_PASSWORD: ''
+ 
+       - image: circleci/mysql:5.7
+ 
+    working_directory: ~/repo
+ 
+    steps:
+      - checkout
+ 
+     # SSH鍵を設定
+      - add_ssh_keys:
+          fingerprints: "aaaaaaaaaaa"
+ 
       - restore_cache:
           keys:
-            - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-            - rails-demo-bundle-v2-
-
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+ 
       - run:
-          name: Bundle Install
-          command: bundle check || bundle install
-
-      
-      - save_cache:
-          key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      - run:
-          name: Database setup
-          command: bundle exec rake db:schema:load --trace
-
-      - run:
-          name: Run rspec in parallel
+          name: install dependencies
           command: |
-            bundle exec rspec --profile 10 \
-                              --format RspecJunitFormatter \
-                              --out test_results/rspec.xml \
-                              --format progress \
-                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+ 
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+ 
+      # テストデータベースの設定
+      - run: rm ./config/database.yml
+      - run: mv ./config/database.yml.ci ./config/database.yml
+      - run: bundle exec rake db:create RAILS_ENV=test
+      - run: bundle exec rake db:migrate RAILS_ENV=test
+ 
+      # テスト実行
+      - run:
+          name: run tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+ 
+            bundle exec rspec --format progress \
+                            --out /tmp/test-results/rspec.xml \
+                            $TEST_FILES
+ 
       - store_test_results:
-          path: test_results
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+ 
+      # ssh-agent で鍵を登録
+      - run:
+          name: Add ssh-agent
+          command: |
+            ssh-agent -s > ~/.ssh_agent_conf
+            source ~/.ssh_agent_conf
+            for _k in $(ls ${HOME}/.ssh/id_*); do
+              ssh-add ${_k} || true
+            done
+ 
+          # デプロイ
+          name: Deploy Master
+          command: |
+            bundle exec cap production deploy
       
