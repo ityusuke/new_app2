@@ -11,11 +11,7 @@ jobs:
           DBHOST: 127.0.0.1
           DBUSER: circleci-demo-ruby
           RAILS_ENV: test
-      - image: tkuchiki/delayed-mysql
-        environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: circleci
+       - image: circleci/mysql:latest
      
     steps: 
       - checkout 
