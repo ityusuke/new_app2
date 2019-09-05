@@ -1,10 +1,11 @@
-- if current_user.faved?(@tour)
-  = link_to tour_favorite_path(@tour.id),method: :delete,remote: :true,class:"btn btn-success favorite-btn" do
-    = fa_icon 'book'
-    お気に入り登録解除
-    = fa_icon 'book'
-- else
-  = link_to tour_favorites_path(@tour.id),method: :post,remote: :true,class:"btn btn-success favorite-btn " do
-    = fa_icon 'book'
-    お気に入り登録する
-    = fa_icon 'book'
+.follow-box  
+  - if current_user.faved?(@tour)
+    = link_to tour_favorite_path(@tour.id),method: :delete,remote: :true,class:"btn btn-success favorite-btn ml-0" do
+      = fa_icon 'book'
+      お気に入り登録解除
+      = fa_icon 'book'
+  - else
+    = link_to tour_favorites_path(@tour.id),method: :post,remote: :true,class:"btn btn-success favorite-btn ml-0" do
+      = fa_icon 'book'
+      お気に入り登録する
+      = fa_icon 'book'

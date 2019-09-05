@@ -2,10 +2,9 @@
 
 class RelationshipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :flash_when_not_login
+
 
   def create
-    binding.pry
     user = User.find(params[:relationship][:follow_id])
     following = current_user.follow(user)
     if following.save!

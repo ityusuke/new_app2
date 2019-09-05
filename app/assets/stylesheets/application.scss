@@ -138,7 +138,42 @@ dl.searchbox dd{
   border-radius: 0 6px 6px 0;
   color:#FFF;
 }
+.map-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 56.25%;
+}
 
+.map-canvas {
+    position: absolute;
+    top: 0;
+    right: 40%;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+.map-route {
+    overflow: scroll;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 54px;
+    left: 60%;
+    margin: 0;
+    padding: 10px;
+}
+
+.map-search {
+    position: absolute;
+    height: 54px;
+    right: 0;
+    bottom: 0;
+    left: 60%;
+    margin: 0;
+    padding: 10px;
+}
 .search-btn:hover {
   background:#228B22;
 }
@@ -150,7 +185,7 @@ dl.searchbox dd{
   text-decoration: none;
   color:gray;
 }
-.justify-content-around{
+.bd-box{
   border-bottom:1px grey solid;
   padding-bottom:1rem;
   margin-bottom:0.5rem;
@@ -160,3 +195,9 @@ dl.searchbox dd{
     font-weight:bold;
     color: #6c757d;
 }
+span {
+            text-align: center;
+            letter-spacing: 0.15em;
+            font-size: 10px;
+            color: #dcdcdc;
+        }

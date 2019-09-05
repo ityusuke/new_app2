@@ -11,9 +11,9 @@ class UsersController < ApplicationController
   
   def create
     @user=User.new(user_params)
-    if @user.save
+    if @user.save(user_params)
        set_dafault_image(@user)
-       current_user = @user
+       bypass_sign_in(@user)
        redirect_to root_path
     else
       #パラムスを持つユーザー
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
      user_find_by_id
       if @user.update(user_params)
         # set_dafault_image(@user)
+        bypass_sign_in(@user)
       redirect_to @user
       else
       render edit_user_path

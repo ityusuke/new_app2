@@ -136,6 +136,7 @@ GEM
       romaji
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     haml (5.1.1)
       temple (>= 0.8.0)
       tilt
@@ -314,6 +315,8 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
+    rspec_junit_formatter (0.4.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.74.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -403,6 +406,7 @@ DEPENDENCIES
   faker
   font-awesome-sass (~> 5.4.1)
   gimei
+  gmaps4rails
   haml-rails
   jbuilder (~> 2.5)
   jquery-rails
@@ -423,6 +427,7 @@ DEPENDENCIES
   ransack
   rmagick
   rspec-rails (~> 3.6)
+  rspec_junit_formatter
   rubocop
   sass-rails (~> 5.0)
   selenium-webdriver

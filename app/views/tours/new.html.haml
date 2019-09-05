@@ -2,6 +2,13 @@
 = simple_form_for(@tour) do |f|
   = f.error_notification
   .form-inputs.form_group
+    .map-container
+      #map.map-canvas
+      .map-route
+        %ul#route-list.list-group
+      .map-search
+        = button_tag "ルート検索", id: "btn-search", class: "btn btn-primary", onclick: "search()"
+
     = f.input :tourname,                       
       input_html: { autocomplete: "tourname",class:"form-control" } 
     = f.input :tourcontent,                       
@@ -10,3 +17,11 @@
        input_html: { class:"mb-3 form-control" }
     = f.button :submit, "ツアーを作る",
       input_html: { class:" btn btn-primary " } 
+:javascript
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(#{raw @hash.to_json});
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+

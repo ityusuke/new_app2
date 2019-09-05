@@ -5,10 +5,13 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 gem 'devise'
+gem 'gmaps4rails'
 group :development do
   gem 'rubocop', require: false
 end
-
+group :test do
+  gem 'rspec_junit_formatter'
+end
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'mini_magick', '~> 4.8'
 gem 'acts-as-taggable-on', '~> 4.0'

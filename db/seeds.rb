@@ -3,7 +3,7 @@
 30.times do |n|
   Faker::Config.locale = :ja
   @username = Faker::Name.name
-  @email = "ed#{n + 1}lmawal2-#{n + 1}@railstutorial.org"
+  @email = "ed#{n + 1}lmdawdl2-#{n + 1}@railstutorial.org"
   password = 'password'
   User.create!(username: @username,
                email: @email,

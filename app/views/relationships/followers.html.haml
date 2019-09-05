@@ -1,19 +1,6 @@
-// %h2.page_title ツアーリスト
-// =render "shared/search"
-// = page_entries_info @following
-// = paginate @following 
-// -@following.each do |fal|
-//   .card.mb-1.mt-1
-//     .card-body
-//       %h4.card-title  
-//         %smallタイトル:
-//         #{tour.tourname}
-//       %h6.card-subtitle.mb-2.text-muted 
-//         %small製作者:
-//         =link_to(tour.user.username,user_path(tour.user.id))
-//       %p.card-text
-//         = truncate(tour.tourcontent,separator: '.',lendth:40) do
-//           =link_to("続きを読む",tour_path(tour.id))
-//       = link_to "詳細",tour_path(tour.id),class:"card-link"
-// = paginate @fallowing  
-    
+- @user.followers.each do |user|
+  %table
+    %tr
+      %td
+        = user.name
+      %td= link_to '詳細', user_path(user)
