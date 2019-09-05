@@ -1,28 +1,31 @@
-version: 2 # use CircleCI 2.0
-jobs: # a collection of steps
-  build: # runs not using Workflows must have a `build` job as entry point
-    parallelism: 3 # run three instances of this job in parallel
-    docker: # run the steps with Docker
-      - image: circleci/ruby:2.4-stretch-node-browsers-legacy # ...with this image as the primary container; this is where all `steps` will run
-        environment: # environment variables for primary container
+version: 2 
+jobs:
+  build: 
+    parallelism: 3 
+    docker: 
+      - image: circleci/ruby:circleci/ruby:2.4-node-jessie
+        environment: 
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           DBHOST: 127.0.0.1
           DBUSER: circleci-demo-ruby
           RAILS_ENV: test
-      - image: circleci/mysql:latest-ram # database image
-        environment: # environment variables for database
+      - image: tkuchiki/delayed-mysql
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: circleci
      
-    steps: # a collection of executable commands
-      - checkout # special step to check out source code to working directory
+    steps: 
+      - checkout 
 
-      # Which version of bundler?
+      
       - run:
           name: Which bundler?
           command: bundle -v
 
-      # Restore bundle cache
+      
       - restore_cache:
           keys:
             - rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
@@ -32,7 +35,7 @@ jobs: # a collection of steps
           name: Bundle Install
           command: bundle check || bundle install
 
-      # Store bundle cache
+      
       - save_cache:
           key: rails-demo-bundle-v2-{{ checksum "Gemfile.lock" }}
           paths:
@@ -55,7 +58,6 @@ jobs: # a collection of steps
                               --format progress \
                               $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
-      # Save test results for timing analysis
       - store_test_results:
           path: test_results
-      # See https://circleci.com/docs/2.0/deployment-integrations/ for example deploy c
+      
