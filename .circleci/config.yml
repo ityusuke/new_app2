@@ -11,7 +11,7 @@ jobs:
           DBHOST: 127.0.0.1
           DBUSER: circleci-demo-ruby
           RAILS_ENV: test
-       - image: circleci/mysql:latest
+      - image: circleci/mysql:latest
      
     steps: 
       - checkout 
