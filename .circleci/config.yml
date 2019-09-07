@@ -69,7 +69,7 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-      # run rubocop
+      # run minitest
       - run:
-          name: run rubocop
-          command: bundle exec rubocop
+          name: run minitest
+          command: bundle exec minitest
