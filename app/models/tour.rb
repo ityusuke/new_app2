@@ -20,5 +20,5 @@ class Tour < ApplicationRecord
     return Tour.all unless search
 
     Tour.where(['tourcontent LIKE ?', "%#{search}%"])
-   end
+  end
 end
