@@ -20,9 +20,9 @@
 //= require gmaps/google
 //= require_tree .
 
- handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers([
+ var handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  var markers = handler.addMarkers([
     {
       "lat": 0,
       "lng": 0,
