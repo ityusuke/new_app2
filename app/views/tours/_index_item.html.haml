@@ -1,11 +1,12 @@
 -@tours.each do |tour|
   .card.mb-1.mt-1
     .card-body
+
       %h4.card-title  
         %smallタイトル:
         #{tour.tourname}
       %h6.card-subtitle.mb-2.text-muted 
-      %p.card-text
+      %p.card-text{"data-placement" => "top", "data-toggle" => "tooltip", "title" => "#{tour.tourcontent}"}
         = truncate(tour.tourcontent,separator: '.',lendth:40) do
           =link_to("続きを読む",tour_path(tour.id))
       = link_to "詳細",tour_path(tour.id),class:"card-link"
