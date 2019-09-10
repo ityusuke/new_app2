@@ -3,9 +3,14 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.2'
+
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '2.5.5'
 
 gem 'devise'
+gem 'mysql2', '~> 0.4.10'
 gem 'gmaps4rails'
 group :development do
   gem 'rubocop', require: false
