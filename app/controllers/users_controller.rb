@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   
   def create
     @user=User.new(user_params)
-    if @user.save(user_params)
+    if @user.save
        set_dafault_image(@user)
        bypass_sign_in(@user)
        redirect_to root_path

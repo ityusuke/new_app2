@@ -22,12 +22,7 @@ class ToursController < ApplicationController
 
   def new
     @tour = Tour.new
-    @hash = Gmaps4rails.build_markers(@places) do |place, marker|
-      marker.lat place.latitude
-      marker.lng place.longitude
-      marker.infowindow render_to_string( partial: "map/infowindow",
-                                          locals: {place:place} )
-      end
+
   end
 
   def create
