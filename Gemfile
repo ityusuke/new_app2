@@ -6,7 +6,6 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.2.2'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.5'
-gem 'rails', '~> 5.2.1'
 gem "aws-sdk-s3", require: false 
 gem 'devise'
 gem 'mysql2', '~> 0.4.10'
