@@ -31,7 +31,7 @@ class ToursController < ApplicationController
   end
 
   def create
-    if @tour == current_user.tours.new(tour_params).save
+    if @tour = current_user.tours.new(tour_params).save
       redirect_to user_path(id: current_user.id)
     else
       render new_tour_path
