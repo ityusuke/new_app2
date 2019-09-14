@@ -2,8 +2,6 @@
 = simple_form_for(@tour) do |f|
   = f.error_notification
   .form-inputs.form_group
-    %div{:style => "width: 800px;"}
-      #map{:style => "width: 800px; height: 400px;"}
     = f.input :tourname,                       
       input_html: { autocomplete: "tourname",class:"form-control" } 
     = f.input :tourcontent,                       
