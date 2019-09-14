@@ -3,17 +3,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-<<<<<<< HEAD
 gem 'rails', '~> 5.2.2'
-
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
 ruby '2.5.5'
-
-=======
 gem 'rails', '~> 5.2.1'
 gem "aws-sdk-s3", require: false 
->>>>>>> 960afafcca098f376a057a015ccd44b6180fa336
 gem 'devise'
 gem 'mysql2', '~> 0.4.10'
 gem 'dotenv-rails'
