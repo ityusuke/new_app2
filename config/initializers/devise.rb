@@ -4,8 +4,8 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   config.omniauth :google_oauth2,
-                  ENV['GOOGLE_APP_ID'] = '415961246454-un258ho6aj2aeebktfnemnej68qp7gae.apps.googleusercontent.com',
-                  ENV['GOOGLE_APP_SECRET'] = 'AA9dXwX0pjiBH3sxX3qR3_g-',
+                  ENV['GOOGLE_APP_ID'],
+                  ENV['GOOGLE_APP_SECRET'],
                   name: :google,
                   scope: %w[email]
   # The secret key used by Devise. Devise uses this key to generate

@@ -11,7 +11,7 @@ ruby '2.5.5'
 
 gem 'devise'
 gem 'mysql2', '~> 0.4.10'
-gem 'gmaps4rails'
+gem 'dotenv-rails'
 group :development do
   gem 'rubocop', require: false
 end

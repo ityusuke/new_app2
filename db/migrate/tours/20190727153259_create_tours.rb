@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateTours < ActiveRecord::Migration[5.0]
+class CreateTours < ActiveRecord::Migration[5.2]
   def change
     create_table :tours do |t|
       t.string :tourname

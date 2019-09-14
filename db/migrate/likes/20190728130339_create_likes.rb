@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateLikes < ActiveRecord::Migration[5.0]
+class CreateLikes < ActiveRecord::Migration[5.2]
   def change
     create_table :likes do |t|
       t.references :tour, foreign_key: true
