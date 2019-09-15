@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   get '/privacy' => 'static_pages#privacy'
   get '/rule' => 'static_pages#rule'
   get '/search' => 'static_pages#search'
+  get     'login',   to: 'sessions#new'
+  post    'login',   to: 'sessions#create'
+  delete  'logout',  to: 'sessions#destroy'
   devise_for :users, controllers: {
-    sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   resources :users, only: %i[new create show edit update destroy follow]

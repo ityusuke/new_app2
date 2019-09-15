@@ -1,6 +1,6 @@
 %header
-%nav.navbar.navbar-expand-sm
-  %a.font-italic.text-secondary.font-weight-bold.navbar-brand{:href => "/"} Tourly
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %a.navbar-brand{:href => "/"} tourly
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -33,7 +33,7 @@
             Tourlyを始める
           .dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
             %li.nav-item
-              = link_to "login",new_user_session_path,class:"nav-link dropdown-item"
+              = link_to "login",login_path,class:"nav-link dropdown-item"
             %li.nav-item
               = link_to "signup",new_user_path,class:"nav-link dropdown-item"
 

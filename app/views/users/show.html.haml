@@ -18,7 +18,7 @@
   = link_to edit_user_path(@user.id),class:"links" do
     = fa_icon 'edit'
     ユーザー編集
-  = link_to destroy_user_session_path, method: :delete,class:"links" do
+  = link_to logout_path, method: :delete,class:"links" do
     = fa_icon 'sign-out'
     ログアウト
 = render('relationships/follow_form',user: @user) 

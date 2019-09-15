@@ -12,15 +12,22 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
 
-  devise :database_authenticatable, 
-         :recoverable, :rememberable, 
-        :registerable,:omniauthable
-        # ,:validatable
+    devise:omniauthable,:rememberable
+  # devise :database_authenticatable, 
+  #        :recoverable, :rememberable, 
+  #       :registerable,:omniauthable
+  #       # ,:validatable
   mount_uploader :userimage, UserimageUploader
-  # validates :username, presence: true, length: { maximum: 25 }
-  # validates :password, presence: true, length: { maximum: 15, minimum: 4 },
-  #                     confirmation: true, exclusion: { in: %w($ # % & ' ( ) ' =) }
+  
+  validates :username, presence: true, length: { maximum: 25 }
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true, length: { maximum: 15, minimum: 4 },
+                      confirmation: true, exclusion: { in: %w($ # % & ' ( ) ' =) }
   has_one_attached :user_image
+
+
+
+
   def remember_me
     true
   end
@@ -55,10 +62,5 @@ class User < ApplicationRecord
     user
   end
 
-  # def update_without_current_password(params, *options)
-  #   params.delete(:current_password)
-  #   result = update_attributes(params, *options)
-  #   clean_up_passwords
-  #   result
-  # end
+
 end

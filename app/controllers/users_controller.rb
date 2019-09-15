@@ -12,8 +12,7 @@ class UsersController < ApplicationController
   def create
     @user=User.new(user_params)
     if @user.save
-       set_dafault_image(@user)
-       bypass_sign_in(@user)
+      log_in @user
        redirect_to root_path
     else
       #パラムスを持つユーザー
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
   def update
      user_find_by_id
       if @user.update(user_params)
-        # set_dafault_image(@user)
+ 
         bypass_sign_in(@user)
       redirect_to @user
       else
@@ -75,9 +74,5 @@ class UsersController < ApplicationController
    params.require(:user).permit(:username,:email, :password, :password_confirmation,:user_image)
   end
   
-  def set_dafault_image(user)
-    if user.image.nil?
-      user.image= "guest.jpg"
-    end
-  end
+  
 end
