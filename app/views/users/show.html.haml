@@ -37,6 +37,6 @@
           =link_to("続きを読む",tour_path(tour.id))
       = link_to "詳細",tour_path(tour.id),class:"card-link links ml-0"
       -if current_user == tour.user
-        = link_to "編集",edit_user_path(@user.id),class:"card-link links"
+        = link_to "編集",edit_tour_path(tour.id),class:"card-link links"
         = link_to "削除","/tours/#{tour.id}",class:"card-link links",method: :delete
 

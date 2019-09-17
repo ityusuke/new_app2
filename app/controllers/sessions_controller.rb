@@ -19,7 +19,13 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_url
   end
+  def test_login
+    @test_user=User.find_by(username:"test_user")
+    log_in @test_user
+    redirect_to root_path
 
+    
+  end
 
    
 end

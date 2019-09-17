@@ -29,8 +29,9 @@ class UsersController < ApplicationController
   def update
      user_find_by_id
       if @user.update(user_params)
- 
-        bypass_sign_in(@user)
+      @user.username = params[:username]
+      @user.image = params[:image]
+        log_in @user
       redirect_to @user
       else
       render edit_user_path

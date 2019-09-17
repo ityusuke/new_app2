@@ -36,4 +36,7 @@
               = link_to "login",login_path,class:"nav-link dropdown-item"
             %li.nav-item
               = link_to "signup",new_user_path,class:"nav-link dropdown-item"
+              = link_to "/test_login",method: :post,class:"nav-link" do
+                = fa_icon 'sign-out'
+                テストユーザーでログイン
 

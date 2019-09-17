@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/search' => 'static_pages#search'
   get     'login',   to: 'sessions#new'
   post    'login',   to: 'sessions#create'
+  post    '/test_login',   to: 'sessions#test_login'
   delete  'logout',  to: 'sessions#destroy'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
