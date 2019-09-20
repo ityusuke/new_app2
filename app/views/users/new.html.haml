@@ -13,7 +13,7 @@
       required: true,                                                                       
       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), 
       input_html: { autocomplete: "new-password",class:"form-control" }                                          
-    = f.input :user_image, as: :file
+    = f.input :image, as: :file
     = f.button :submit, "登録する",
     input_html: { class:" btn btn-primary " } 
   = link_to 'Signin with Google',user_google_omniauth_authorize_path

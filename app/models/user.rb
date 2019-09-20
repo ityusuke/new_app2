@@ -17,13 +17,12 @@ class User < ApplicationRecord
   #        :recoverable, :rememberable, 
   #       :registerable,:omniauthable
   #       # ,:validatable
-  mount_uploader :userimage, UserimageUploader
   
   validates :username, presence: true, length: { maximum: 25 }
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { maximum: 15, minimum: 4 },
                       confirmation: true, exclusion: { in: %w($ # % & ' ( ) ' =) }
-  has_one_attached :user_image
+  has_one_attached :image
 
 
 

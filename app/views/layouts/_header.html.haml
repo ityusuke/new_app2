@@ -1,42 +1,43 @@
 %header
-%nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  %a.navbar-brand{:href => "/"} tourly
-  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
-    %span.navbar-toggler-icon
-  #navbarSupportedContent.collapse.navbar-collapse
-    %ul.navbar-nav.mr-auto
-      %li.nav-item
-        = link_to about_path,class:"nav-link" do
-          = fa_icon 'print'
-          Tourlyとは
-      %li.nav-item
-        = link_to "/search",class:"nav-link" do
-          = fa_icon 'search '
-          Tour検索
-      %li.nav-item
-        = link_to tours_path,class:"nav-link" do
-          = fa_icon 'plane'
-          Tour一覧
-      -if current_user  
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    %a.navbar-brand{:href => "/"} tourly
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
         %li.nav-item
-        = link_to new_tour_path,class:"nav-link"do
-          = fa_icon 'edit'
-          tourをつくる
+          = link_to about_path,class:"nav-link" do
+            = icon "fa",'print'
+            Tourlyとは
+
         %li.nav-item
-        = link_to user_path(current_user.id),class:"nav-link" do
-          = fa_icon 'users'
-          マイページ
-        
-      -else
-        .dropdown
-          %button#dropdownMenu1.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-            Tourlyを始める
-          .dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
-            %li.nav-item
-              = link_to "login",login_path,class:"nav-link dropdown-item"
-            %li.nav-item
-              = link_to "signup",new_user_path,class:"nav-link dropdown-item"
-              = link_to "/test_login",method: :post,class:"nav-link" do
-                = fa_icon 'sign-out'
-                テストユーザーでログイン
+          = link_to "/search",class:"nav-link" do
+            = icon "fa",'search '
+            Tour検索
+        %li.nav-item
+          = link_to tours_path,class:"nav-link" do
+            = icon "fa",'plane'
+            Tour一覧
+        -if current_user  
+          %li.nav-item
+            = link_to new_tour_path,class:"nav-link"do
+              = icon "fa",'edit'
+              tourをつくる
+          %li.nav-item
+            = link_to user_path(current_user.id),class:"nav-link" do
+              = icon "fa",'users'
+              マイページ          
+        -else
+          %li.nav-item
+            = link_to login_path,class:"nav-link " do
+              = icon "fa","pencil-ruler"
+              ログイン
+          %li.nav-item
+            = link_to new_user_path,class:"nav-link" do
+              = icon "fa","pen-nib"
+              新規登録
+          %li.nav-item
+            = link_to "/test_login",method: :post,class:"nav-link" do
+              = icon "fa",'user-edit'
+              テストユーザーでログイン
 

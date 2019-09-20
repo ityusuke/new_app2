@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
   include SessionsHelper
@@ -9,7 +8,7 @@ class ApplicationController < ActionController::Base
     @search_tours = @search.result.page(params[:page])
   end
 
-　#ログイン有無によるアクセス制限
+#ログイン有無によるアクセス制限
   def check_user_login?
     unless current_user
       flash.now[:notice] = 'ログインしてください'

@@ -1,61 +1,63 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-
-#環境
-gem 'rails', '~> 5.2.2'
-gem 'dotenv-rails'
-ruby '2.5.5'
+gem 'rails', '~> 5.2.1'
 gem 'mysql2', '~> 0.4.10'
-#SNS認証機能
-gem 'rails_admin'
+gem 'aws-partitions', '~> 1.8'
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
-#HTML,CSS
-gem 'bootstrap', '~> 4.1.1'
-gem 'bootstrap_form'
-gem 'font-awesome-sass', '~> 5.4.1'
-gem 'erb2haml'
-gem 'haml-rails'
-gem 'simple_form'
-#ページネーション
-gem 'kaminari', '~> 0.17.0'
-gem 'kaminari-bootstrap', '~> 3.0.1'
-# 画像投稿機能
-gem "aws-sdk-s3", require: false 
-gem 'carrierwave'
-gem 'rmagick'
-gem 'mini_magick', '~> 4.8'
-#検索機能
-gem 'ransack'
-#サンプルデータ
-gem 'faker'
-#異言語対応
-gem 'rails-i18n', '~> 5.1'
-#デバッグ用gem
-gem 'pry-byebug'
-gem 'pry-rails'
-gem 'activemodel-serializers-xml'
-#Linter
+
 group :development do
   gem 'rubocop', require: false
-end
-# Rspec用
-group :development, :test do
-  gem 'capybara'
-  gem 'factory_bot_rails', '~>4.11'
-  gem 'rspec-rails', '~> 3.6'
-  gem 'selenium-webdriver'
-  gem 'dotenv-rails'
-  gem 'sqlite3', '~> 1.3.6'
 end
 group :test do
   gem 'rspec_junit_formatter'
 end
-gem 'nokogiri', '~> 1.10.4'
+gem 'font-awesome-sass', '~> 5.4.1'
+gem 'mini_magick', '~> 4.8'
+gem 'acts-as-taggable-on', '~> 4.0'
+gem 'aws-sdk-s3', require: false
+gem 'faker'
+gem 'gimei'
+gem 'kaminari', '~> 0.17.0'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'pry-byebug'
+gem 'pry-rails'
+gem 'rails-i18n', '~> 5.1'
+gem 'ransack'
+gem 'rmagick'
+# easy test
+group :development, :test do
+ gem 'capybara'
+  gem 'factory_bot_rails', '~>4.11'
+  gem 'rspec-rails', '~> 3.6'
+  gem 'selenium-webdriver'
+end
+# 管理者権限
+gem 'rails_admin'
+# easier form create
+gem 'simple_form'
+# Use sqlite3 as the database for Active Record
+# image upload
+gem 'carrierwave'
+# make easier restigation and login
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+# user admin gem
+gem 'cancancan'
+
+group :development, :test do
+  gem 'dotenv-rails'
+  gem 'sqlite3', '~> 1.3.6'
+end
+# Bootstrap for rails
+gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap_form'
+# Haml for rails
+gem 'erb2haml'
+gem 'haml-rails'
+# Create secure password
+gem 'bcrypt', '3.1.11'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -85,7 +87,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
-
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'listen', '~> 3.0.5'

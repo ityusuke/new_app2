@@ -9,17 +9,17 @@
       フォロワー：
       = link_to(@user.followers.count,followers_user_path(@user.id))
   .show-right
-    - if @user.user_image.attached?
-      = image_tag(@user.user_image.variant(resize: '150x150').processed)
+    - if @user.image.attached?
+      = image_tag(@user.image.variant(resize: '150x150').processed)
 .d-flex.justify-content-around.bd-box
   =link_to favorite_user_path(@user.id),class:"links" do
-    = fa_icon 'book'
+    = icon 'fa','book'
     お気に入りリスト
   = link_to edit_user_path(@user.id),class:"links" do
-    = fa_icon 'edit'
+    = icon 'fa','edit'
     ユーザー編集
   = link_to logout_path, method: :delete,class:"links" do
-    = fa_icon 'sign-out'
+    = icon 'fa','sign-out'
     ログアウト
 = render('relationships/follow_form',user: @user) 
 -if @tours.count == 0
