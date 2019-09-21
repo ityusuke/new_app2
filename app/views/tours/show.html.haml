@@ -7,9 +7,21 @@
       %small製作者:
       =link_to(@tour.user.username,user_path(@tour.user.id))
     %p.card-text
-      - if @tour.images.attached?
-        -@tour.images.each do |image|
+      - if @spots.images.attached?
+        -@spots.images.each do |image|
           = image_tag(image.variant(resize: '130x130').processed)
+
+    -@spots.each do |spot|
+      .spots_section.row
+        .col-4
+          - if @spots.images.attached?
+            -@spots.images.each do |image|
+              = image_tag(image.variant(resize: '130x130').processed)
+        .col-8
+          %h4.card-title  
+            =spot.spotname
+          %h6.card-title
+            =spot.spotcontent
 
     = @tour.tourcontent
     %p.card-text#likes_ajax.mt-5.mb-0

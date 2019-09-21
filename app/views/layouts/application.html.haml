@@ -7,12 +7,6 @@
     .row
       .white_box.col-md-6
         = yield
-    %script{:src => "//maps.google.com/maps/api/js?key=#{ENV['GMAPS_API_KEY']}"}
-    %script{:src => "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
-    %script{:src => "//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js", :type => "text/javascript"}
-    :javascript
-      $(function(){
-        $('[data-toggle="tooltip"]').tooltip();
-      });
+   
     =render("layouts/footer")
 

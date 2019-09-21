@@ -57,6 +57,9 @@ padding: 3px 10px;
 
 }
 }
+
+
+
 .card{
     border:1px rgba(0,0,0,0.2) solid;
     box-shadow:2px 2px rgba(0,0,0,0.2);
@@ -68,9 +71,9 @@ padding: 3px 10px;
 }
 .form_group{
     text-align:center;
-    width:70%;
+    width:80%;
     margin:0 auto;
-    padding-top:2rem;
+    
 label::after {
   content: "\A" ;
   white-space: pre;
@@ -200,3 +203,10 @@ span {
             font-size: 10px;
             color: #dcdcdc;
         }
+.spots_section{
+    border: #6c757d69 solid 1px;
+    padding:0.5rem;
+    margin:0 auto;
+    width: 100%;
+    border-radius: 0.5rem;
+}

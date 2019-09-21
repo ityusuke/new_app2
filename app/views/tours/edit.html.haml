@@ -4,9 +4,22 @@
   .form-inputs.form_group
     = f.input :tourname,                       
       input_html: { autocomplete: "tourname",class:"form-control" } 
+    .spots_section
+      - @tour.spots.each do |spot|
+        = simple_form_for(:menber) do |s| 
+          .form-inputs.form_group
+            %h6.page_title.mb-3 スポット詳細
+            = s.label :画像
+            = s.input :images, as: :file,
+              label: false,input_html: { class:"form-control" }  
+            = s.label :場所
+            = s.input :spotname,label: false,placeholder:"場所の名前を教えて下さい",                                                               
+              input_html: { class:"form-control" }
+            = s.label :見どころ
+            = s.input :spotcontent,label: false,placeholder:"見どころはどこですか？",                                                                 
+              input_html: { class:"form-control" } 
+    = icon "fa","plus-square"
     = f.input :tourcontent,                       
-      input_html: { autocomplete: "tourcontent",class:"form-control"} 
-    = f.input :images,multiple: true,
-       input_html: { class:"mb-3 mt-3" }
+      input_html: { autocomplete: "tourcontent",class:"form-control"}
     = f.button :submit, "ツアーを更新する",
     input_html: { class:" btn btn-primary " } 

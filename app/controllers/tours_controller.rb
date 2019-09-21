@@ -22,7 +22,7 @@ class ToursController < ApplicationController
 
   def new
     @tour = Tour.new
-
+    @tour.spots.new 
   end
 
   def create
@@ -55,12 +55,13 @@ class ToursController < ApplicationController
   private
 
   def tour_params
-    params.require(:tour).permit(:tourname, :tourcontent, :tag_list,
-                                  :q,:images)
+    params.require(:tour).permit(:tourname, :tourcontent,
+                                  :q,spots_attributes: [:spotname,:spotcontent,:images])
   end
 
   def tour_find_by_id
     @tour = Tour.find_by(id: params[:id])
+    @spots = @tour.spots
   end
   
 

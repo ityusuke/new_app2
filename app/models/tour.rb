@@ -7,10 +7,12 @@ class Tour < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, foreign_key: 'tour_id', dependent: :destroy
   has_many :users, through: :favorites, dependent: :destroy
+  has_many :spots, dependent: :destroy
 
+  accepts_nested_attributes_for :spots
   validates :user_id, presence: true
 
-  has_many_attached :images
+  
 
 
    
