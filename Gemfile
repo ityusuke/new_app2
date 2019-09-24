@@ -5,6 +5,7 @@ gem 'rails', '~> 5.2.1'
 gem 'mysql2', '~> 0.4.10'
 gem 'aws-partitions', '~> 1.8'
 gem 'devise'
+gem 'dotenv-rails'
 
 group :development do
   gem 'rubocop', require: false

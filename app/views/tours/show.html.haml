@@ -6,28 +6,45 @@
     %h6.card-subtitle.mb-2.text-muted 
       %small製作者:
       =link_to(@tour.user.username,user_path(@tour.user.id))
-    %p.card-text
-      - if @spots.images.attached?
-        -@spots.images.each do |image|
-          = image_tag(image.variant(resize: '130x130').processed)
-
-    -@spots.each do |spot|
+      さん
+    .d-flex.justify-content-between.tour_information
+      .aaa
+        %small 誰と行く？:
+        = get_tour_type(@tour)
+      .aaa
+        %small いつ行く？:
+        = get_season(@tour)
+    .card-subtitle
       .spots_section.row
         .col-4
-          - if @spots.images.attached?
-            -@spots.images.each do |image|
+          - if @spot0.images.attached?
+            - @spot0.images.each do |image| 
               = image_tag(image.variant(resize: '130x130').processed)
         .col-8
           %h4.card-title  
-            =spot.spotname
+            =@spot0.spotname
           %h6.card-title
-            =spot.spotcontent
-
-    = @tour.tourcontent
+            =@spot0.spotcontent
+      .arrows_box
+        = icon 'fa','arrow-down'
+      .spots_section.row
+        .col-4
+          - if @spot1.images.attached?
+            - @spot1.images.each do |image| 
+              = image_tag(image.variant(resize: '130x130').processed)
+        .col-8
+          %h4.card-title  
+            =@spot1.spotname
+          %h6.card-title
+            =@spot1.spotcontent
+    %h5.card-title.text-center.mt-5
+      ツアーの説明
+    %h6.card-title.text-center.mt-4
+      = @tour.tourcontent
     %p.card-text#likes_ajax.mt-5.mb-0
       = render partial: 'likes/likes_box'
     -if current_user == @tour.user
-      = link_to "編集",edit_tour_path(@tour.id),class:"card-link"
+      = link_to "編集",edit_tour_path(@tour.id),data: { turbolinks: false},class:"card-link"
       = link_to "削除","/tours/#{@tour.id}",class:"card-link",method: :delete
     %p.small.text-right 作成日時：#{@tour.created_at.strftime('%m月%d日 %H時%M分' )}
     #favorites_ajax

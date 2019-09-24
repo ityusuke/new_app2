@@ -1,12 +1,12 @@
 -if liked?(@tour)
   = link_to tour_like_path(@tour.id),method: :delete,remote: :true do
-    = fa_icon 'heart',class:"like"
+    = icon "fa",'heart',class:"like"
   = @likes.count
-  = fa_icon 'edit'
+  = icon "fa",'edit'
   = @comments.count
 -else
   = link_to tour_likes_path(@tour.id),method: :post,remote: :true do
-    = fa_icon 'heart',class:"dislike"
+    = icon "fa",'heart',class:"dislike"
   = @likes.count
-  = fa_icon 'edit'
+  = icon "fa",'edit'
   = @comments.count

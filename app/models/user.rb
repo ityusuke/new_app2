@@ -24,7 +24,13 @@ class User < ApplicationRecord
                       confirmation: true, exclusion: { in: %w($ # % & ' ( ) ' =) }
   has_one_attached :image
 
-
+  if Rails.env.production?
+    S3_CREDENTIALS={access_key_id: ENV['AWS_S3_ACCESS_ID'],
+       secret_access_key: ENV['AWS_S3_ACCESS_KEY'], 
+       bucket: ENV['AWS_S3_BUCKET_NAME'], 
+       s3_host_name: "s3-ap-northeast-1.amazonaws.com",
+       s3_region: ENV['AWS_REGION']}
+  end
 
 
   def remember_me
