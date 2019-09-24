@@ -3,7 +3,7 @@
 Rails.application.configure do
   config.assets.initialize_on_precompile = false
   # Settings specified here will take precedence over those in config/application.rb.
-config.require_master_key = true
+  config.require_master_key = true
   # Code is not reloaded between requests.
   config.cache_classes = true
   config.assets.compile = true
