@@ -91,8 +91,7 @@ let markers = {
     new google.maps.Size(24, 33)) // 画像の大きさを拡大縮小
   };
   
-$(document).on('ready page:load', function() {
-  });
+
   initialize()
   
   map.addListener('click',function(e){
