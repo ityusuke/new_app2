@@ -30,7 +30,7 @@ class UsersController < ApplicationController
      user_find_by_id
       if @user.update(user_params)
       @user.username = params[:username]
-      @user.image = params[:image]
+   
         log_in @user
       redirect_to @user
       else
