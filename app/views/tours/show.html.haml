@@ -15,7 +15,7 @@
         %small いつ行く？:
         = get_season(@tour)
     .card-subtitle
-      .spots_section.row
+      .spots_section.row.border
         .col-4
           - if @spot0.images.attached?
             - @spot0.images.each do |image| 
@@ -27,7 +27,7 @@
             =@spot0.spotcontent
       .arrows_box
         = icon 'fa','arrow-down'
-      .spots_section.row
+      .spots_section.row.border
         .col-4
           - if @spot1.images.attached?
             - @spot1.images.each do |image| 

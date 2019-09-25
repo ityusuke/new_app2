@@ -5,9 +5,9 @@
     = f.label :ツアータイトル
     = f.input :tourname,label: false,placeholder:"(例)大人の隠れ家！鎌倉カフェ巡り",                     
       input_html: { class:"form-control mb-3" } 
-    .spots_section.form_group.form-inputs 
+    .spots_section.form_group.form-inputs.border
       = f.simple_fields_for :spots do |s| 
-        .spots_section
+        .spots_section.border
           %h6.page_title.mb-3 到着地点
           = s.label :画像
           = s.input :images, as: :file,
@@ -22,7 +22,7 @@
         #add_button
           = icon "fa","plus-square"
       = f.simple_fields_for :spots do |s|
-        .spots_section
+        .spots_section.border
           %h6.page_title.mb-3.mt-3 出発地点
           = s.label :画像
           = s.input :images, as: :file,
