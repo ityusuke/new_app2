@@ -16,6 +16,8 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+initialize()
+
 $(function() {
   // initializeでマーカーの無い地図を描画、クリックでマーカーをたてたところの緯度経度を取得し始点にしたい
   // ページを更新しないと地図が表示されないエラーを解決したい
@@ -90,9 +92,9 @@ let markers = {
     new google.maps.Point(12, 33), // マーカーのpositionで与えられる緯度経度を画像のどの点にするか
     new google.maps.Size(24, 33)) // 画像の大きさを拡大縮小
   };
+});
   
 
-  initialize()
   
   map.addListener('click',function(e){
     var click_marker = new google.maps.Marker({
@@ -104,4 +106,3 @@ let markers = {
   
 
 
-});
