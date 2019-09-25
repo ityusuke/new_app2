@@ -16,7 +16,6 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-initialize()
 
 $(function() {
   // initializeでマーカーの無い地図を描画、クリックでマーカーをたてたところの緯度経度を取得し始点にしたい
@@ -74,35 +73,36 @@ $(function() {
   }
   
   
-
-function makeMarker(position, icon, map) {
-  let marker = new google.maps.Marker({
-    position: position,
-    map: map,
-    icon: icon
-  });
-}
-
-
-let markers = {
-  goalMarker: new google.maps.MarkerImage(
-    goalMarkerImg, // 画像のパス
-    new google.maps.Size(24, 33), // マーカーのwidth,height
-    new google.maps.Point(0, 0), // 画像データの中で、どの部分を起点として表示させるか
-    new google.maps.Point(12, 33), // マーカーのpositionで与えられる緯度経度を画像のどの点にするか
-    new google.maps.Size(24, 33)) // 画像の大きさを拡大縮小
-  };
-});
+  initialize();
   
-
-  
-  map.addListener('click',function(e){
-    var click_marker = new google.maps.Marker({
-      position: e.latLng,
+  function makeMarker(position, icon, map) {
+    let marker = new google.maps.Marker({
+      position: position,
       map: map,
-      animation: google.maps.Animation.DROP
+      icon: icon
     });
-  });
-  
+    }
 
 
+  let markers = {
+    goalMarker: new google.maps.MarkerImage(
+      goalMarkerImg, // 画像のパス
+      new google.maps.Size(24, 33), // マーカーのwidth,height
+      new google.maps.Point(0, 0), // 画像データの中で、どの部分を起点として表示させるか
+      new google.maps.Point(12, 33), // マーカーのpositionで与えられる緯度経度を画像のどの点にするか
+      new google.maps.Size(24, 33)) // 画像の大きさを拡大縮小
+  }
+
+    
+
+    
+    map.addListener('click',function(e){
+      var click_marker = new google.maps.Marker({
+        position: e.latLng,
+        map: map,
+        animation: google.maps.Animation.DROP
+      });
+    });
+    
+
+});
