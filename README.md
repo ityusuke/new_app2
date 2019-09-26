@@ -1,60 +1,28 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
- ----------------------------------------------------------------- 
 
+「Tourly」 - 旅をシェアするアプリケーション -
+https://planyy.herokuapp.com/
 
-Hi there! Welcome to AWS Cloud9!
+概要
+旅のルートをシェアすることで、旅の体験を共有することができるアプリケーションです。
 
-To get started, create some files, play with the terminal,
-or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
+テストユーザーとしてログインすることができます。
 
-Happy coding!
-課題点
+【環境】docker + Ruby on Rails + MySQL + Circle CI(テスト自動化)
+※本番環境ではDBにPostgresqlを採用しています
+【インフラ】Heroku
+【主な機能】
+・ユーザーや記事のCRUD処理
+・ログイン機能
+・画像投稿機能 (Active Strage + S3)
+・記事検索機能 (ransack)
+・フォロー機能
+・いいね機能
+・お気に入り機能
+・ページネーション (kaminari)
+・Ajax
+・SNS認証機能 (devise)
+【これから実装する機能】GoogleMap APIを使ったピンと経路の表示(現時点でローカルでは実装済み)、画像複数枚投稿機能
 
-画像投稿機能　8/3　闇深そう・・・
-SNS連携機能　8/4　闇深そう・・・
-タグ機能　8/3
-検索機能　8/3 できた？？？？？
-
-できたやつ
-あああ
-CRUD機能
-ログイン機能
-フォロー機能・Ajax化
-記事投稿機能
-コメント機能
-ページネーション
-認証機能
-コメント機能・Ajax化
-お気に入り機能・Ajax化
-能・Ajax化
-
-
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+言語・フレームワーク
+Ruby 2.5.5
+Rails 5.2.1
