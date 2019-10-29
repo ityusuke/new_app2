@@ -52,7 +52,7 @@ group :development, :test do
   gem 'sqlite3', '~> 1.3.6'
 end
 # Bootstrap for rails
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap_form'
 # Haml for rails
 gem 'erb2haml'
